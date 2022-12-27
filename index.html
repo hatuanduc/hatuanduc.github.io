@@ -24,13 +24,16 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <!-- Remove click event -->
 <script>
-  var elements = document.querySelectorAll("label,a,input,button,textarea,img,iframe,video"), i = 0;
-  for (i; i < elements.length; i += 1) {
-    var e = elements[i];
-    var le = getEventListeners(e).click[0];
-    if (le) {
-      e.removeEventListener('click', le.listener, le.useCapture);
-    }
+  setTimeout(removeClick, 2000)
+  var removeClick = () => {
+    var elements = document.querySelectorAll("label,a,input,button,textarea,img,iframe,video"), i = 0;
+    for (i; i < elements.length; i += 1) {
+      var e = elements[i];
+      var le = getEventListeners(e).click[0];
+      if (le) {
+        e.removeEventListener('click', le.listener, le.useCapture);
+      }
+  }
   }
 </script>
 <!-- <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-MHBHSH7"></script>
