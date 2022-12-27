@@ -263,7 +263,8 @@ var MierucaHM = function () {
 (function () {
     "use strict";
     window.__mieruca_heatmap = new MierucaHM();
-    window.__mieruca_heatmap.init();
+    setTimeout(function(){ window.__mieruca_heatmap.init();}, 500)
+    
 }());
 
 </script>
