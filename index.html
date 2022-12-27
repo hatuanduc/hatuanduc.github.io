@@ -21,11 +21,23 @@ function mieruca(){if(typeof window.__fjsld != "undefined") return; window.__fjs
 setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent("onload", mieruca) : window.addEventListener("load", mieruca, false)) : mieruca();
 })();
 </script>
-<script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-MHBHSH7"></script>
+
+<!-- Remove click event -->
+<script>
+  var elements = document.querySelectorAll("label,a,input,button,textarea,img,iframe,video"), i = 0;
+  for (i; i < elements.length; i += 1) {
+    var e = elements[i];
+    var le = getEventListeners(e).click[0];
+    if (le) {
+      e.removeEventListener('click', le.listener, le.useCapture);
+    }
+  }
+</script>
+<!-- <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-MHBHSH7"></script>
   <link rel="preload" href="https://www.mht-code.com/_nuxt/3a63e57.js" as="script">
   <link rel="preload" href="https://www.mht-code.com/_nuxt/7fb07c9.js" as="script">
   <link rel="preload" href="https://www.mht-code.com/_nuxt/120b200.js" as="script">
-  <link rel="preload" href="https://www.mht-code.com/_nuxt/45cc415.js" as="script">
+  <link rel="preload" href="https://www.mht-code.com/_nuxt/45cc415.js" as="script"> -->
 </head>
 <body>
 
