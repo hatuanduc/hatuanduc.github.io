@@ -194,8 +194,7 @@ var MierucaHM = function () {
 
                 //<editor-fold defaultstate="collapsed" desc="HANDLE CLICK EVENT FOR NON A TAG ELEMENT">
                 setEventClickListener: function (elements) {
-                    elements.addEventListener("click", clickEvent);
-                    var clickEvent = function (e) {
+                  var clickEvent = function (e) {
                         hm.initWindowElement();
                         if (!hmObj.timeOut) {
                             e = e || window.event;
@@ -234,6 +233,7 @@ var MierucaHM = function () {
                             }, this.nodeName !== "A" ? 300 : 1);
                         }
                     };
+                    elements.addEventListener("click", clickEvent);
                 }
                 //</editor-fold>
             };
