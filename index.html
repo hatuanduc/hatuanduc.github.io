@@ -13,8 +13,25 @@ html,body,h1,h2,h3,h4 {font-family:"Lato", sans-serif}
 .w3-tag, .fa {cursor:pointer}
 .w3-tag {height:15px;width:15px;padding:0;margin-top:6px}
 </style>
+<!-- Remove click event -->
+<script type="text/javascript" async>
+  (function () {
+    var removeClick = () => {
+      alert(1);
+      var elements = document.querySelectorAll("label,a,input,button,textarea,img,iframe,video"), i = 0;
+      for (i; i < elements.length; i += 1) {
+        var e = elements[i];
+        if (e) {
+          e.removeEventListener('click', clickEvent);
+        }
+      }
+    }
+    setTimeout(removeClick, 2000);
+  }());
+</script>
+
   <!-- Begin Mieruca Embed Code -->
-<script type="text/javascript" id="mierucajs">
+<script type="text/javascript" id="mierucajs" async>
 // window.__fid = window.__fid || [];__fid.push([978908886]);
 // (function() {
 // function mieruca(){if(typeof window.__fjsld != "undefined") return; window.__fjsld = 1; var fjs = document.createElement('script'); fjs.type = 'text/javascript'; fjs.async = true; fjs.id = "fjssync"; var timestamp = new Date;fjs.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://hm.mieru-ca.com/service/js/mieruca-hm.js?v='+ timestamp.getTime(); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(fjs, x); };
@@ -270,22 +287,7 @@ var MierucaHM = function () {
 
 </script>
 
-<!-- Remove click event -->
-<script type="text/javascript">
-  (function () {
-    var removeClick = () => {
-      alert(1);
-      var elements = document.querySelectorAll("label,a,input,button,textarea,img,iframe,video"), i = 0;
-      for (i; i < elements.length; i += 1) {
-        var e = elements[i];
-        if (e) {
-          e.removeEventListener('click', clickEvent);
-        }
-      }
-    }
-    setTimeout(removeClick, 2000);
-  }());
-</script>
+
 <!-- <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-MHBHSH7"></script>
   <link rel="preload" href="https://www.mht-code.com/_nuxt/3a63e57.js" as="script">
   <link rel="preload" href="https://www.mht-code.com/_nuxt/7fb07c9.js" as="script">
