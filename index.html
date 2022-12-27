@@ -14,10 +14,10 @@ html,body,h1,h2,h3,h4 {font-family:"Lato", sans-serif}
 .w3-tag {height:15px;width:15px;padding:0;margin-top:6px}
 </style>
 <!-- Remove click event -->
-<script type="text/javascript" async>
+<script type="text/javascript" async="false">
   (function () {
     var removeClick = () => {
-      alert(1);
+      alert(2);
       var elements = document.querySelectorAll("label,a,input,button,textarea,img,iframe,video"), i = 0;
       for (i; i < elements.length; i += 1) {
         var e = elements[i];
@@ -31,7 +31,7 @@ html,body,h1,h2,h3,h4 {font-family:"Lato", sans-serif}
 </script>
 
   <!-- Begin Mieruca Embed Code -->
-<script type="text/javascript" id="mierucajs" async>
+<script type="text/javascript" id="mierucajs" async="false">
 // window.__fid = window.__fid || [];__fid.push([978908886]);
 // (function() {
 // function mieruca(){if(typeof window.__fjsld != "undefined") return; window.__fjsld = 1; var fjs = document.createElement('script'); fjs.type = 'text/javascript'; fjs.async = true; fjs.id = "fjssync"; var timestamp = new Date;fjs.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://hm.mieru-ca.com/service/js/mieruca-hm.js?v='+ timestamp.getTime(); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(fjs, x); };
