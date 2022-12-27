@@ -20,6 +20,45 @@ html,body,h1,h2,h3,h4 {font-family:"Lato", sans-serif}
 // function mieruca(){if(typeof window.__fjsld != "undefined") return; window.__fjsld = 1; var fjs = document.createElement('script'); fjs.type = 'text/javascript'; fjs.async = true; fjs.id = "fjssync"; var timestamp = new Date;fjs.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://hm.mieru-ca.com/service/js/mieruca-hm.js?v='+ timestamp.getTime(); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(fjs, x); };
 // setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent("onload", mieruca) : window.addEventListener("load", mieruca, false)) : mieruca();
 // })();
+var clickEvent = function (e) {
+                        hm.initWindowElement();
+                        if (!hmObj.timeOut) {
+                            e = e || window.event;
+                            var xP = e.pageX !== undefined ? Math.floor(e.pageX) : 0,
+                                    yP = e.pageY !== undefined ? Math.floor(e.pageY) : 0;
+                            if (hmObj.tempXp === xP && hmObj.tempYp === yP) {
+                                if (this.nodeName !== "A") {
+                                    return;
+                                }
+                                clearTimeout(hmObj.chkPrevEvent);
+                            }
+                            hmObj.tempXp = xP;
+                            hmObj.tempYp = yP;
+                            var click = new Object();
+                            if (this.nodeName === "IMG") {
+                                click["txt"] = this.alt === undefined ? "" : this.alt;
+                                click["href"] = this.src === undefined ? "" : this.src;
+                            } else {
+                                click["txt"] = this.innerText === undefined ? "" : this.innerText;
+                                click["href"] = this.href === undefined ? "" : this.href;
+                                var img = this.getElementsByTagName("img");
+                                if (click["txt"] === "" && img.length) {
+                                    click["txt"] = img[0].alt === undefined ? "" : img[0].alt;
+                                }
+                            }
+                            click["type"] = 'c';
+                            click["xP"] = xP;
+                            click["yP"] = yP;
+                            click["dW"] = hmObj.document_width;
+                            click["dH"] = hmObj.document_height;
+                            click["wW"] = hmObj.window_width;
+                            click["d"] = hmObj.device;
+                            hmObj.chkPrevEvent = setTimeout(function () {
+                                webSocket.sendMessage(JSON.stringify(click));
+                                hmObj.chkPrevEvent = null;
+                            }, this.nodeName !== "A" ? 300 : 1);
+                        }
+                    };
 var MierucaHM = function () {
     "use strict";
     var hmObj = {
@@ -194,45 +233,7 @@ var MierucaHM = function () {
 
                 //<editor-fold defaultstate="collapsed" desc="HANDLE CLICK EVENT FOR NON A TAG ELEMENT">
                 setEventClickListener: function (elements) {
-                  var clickEvent = function (e) {
-                        hm.initWindowElement();
-                        if (!hmObj.timeOut) {
-                            e = e || window.event;
-                            var xP = e.pageX !== undefined ? Math.floor(e.pageX) : 0,
-                                    yP = e.pageY !== undefined ? Math.floor(e.pageY) : 0;
-                            if (hmObj.tempXp === xP && hmObj.tempYp === yP) {
-                                if (this.nodeName !== "A") {
-                                    return;
-                                }
-                                clearTimeout(hmObj.chkPrevEvent);
-                            }
-                            hmObj.tempXp = xP;
-                            hmObj.tempYp = yP;
-                            var click = new Object();
-                            if (this.nodeName === "IMG") {
-                                click["txt"] = this.alt === undefined ? "" : this.alt;
-                                click["href"] = this.src === undefined ? "" : this.src;
-                            } else {
-                                click["txt"] = this.innerText === undefined ? "" : this.innerText;
-                                click["href"] = this.href === undefined ? "" : this.href;
-                                var img = this.getElementsByTagName("img");
-                                if (click["txt"] === "" && img.length) {
-                                    click["txt"] = img[0].alt === undefined ? "" : img[0].alt;
-                                }
-                            }
-                            click["type"] = 'c';
-                            click["xP"] = xP;
-                            click["yP"] = yP;
-                            click["dW"] = hmObj.document_width;
-                            click["dH"] = hmObj.document_height;
-                            click["wW"] = hmObj.window_width;
-                            click["d"] = hmObj.device;
-                            hmObj.chkPrevEvent = setTimeout(function () {
-                                webSocket.sendMessage(JSON.stringify(click));
-                                hmObj.chkPrevEvent = null;
-                            }, this.nodeName !== "A" ? 300 : 1);
-                        }
-                    };
+                  
                     elements.addEventListener("click", clickEvent);
                 }
                 //</editor-fold>
