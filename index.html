@@ -64,11 +64,15 @@ __fid.push([978908886]);
      * Handle back button on browser to show popup
      **/
     var isBackButtonPrevented = false;
-    //history.pushState(null, null, null);
+    history.pushState({type: "hm-simulator"}, null, null);
     window.addEventListener('popstate', e => {
-        if (window.location.href.includes(window.location.origin + window.location.pathname)) {
+        var isPreventBack = history.state && (history.state.type === "hm-simulator");
+        if (!isPreventBack) {
           return;
         }
+        // if (window.location.href.includes(window.location.origin + window.location.pathname)) {
+        //   return;
+        // }
         e.preventDefault();
         if (!isBackButtonPrevented){
             isBackButtonPrevented = true;
