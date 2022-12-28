@@ -59,6 +59,24 @@ __fid.push([978908886]);
       b("time-out-10")
     }, 500);
     "complete" != document.readyState ? window.attachEvent ? window.attachEvent("onload", b("onload")) : window.addEventListener("load", b("load"), !1) : b("complete")
+          
+    /**
+     * Handle back button on browser to show popup
+     **/
+    var isBackButtonPrevented = false;
+    history.pushState(null, null, null);
+    window.addEventListener('popstate', e => {
+        if (window.location.href.includes(window.location.origin + window.location.pathname)) {
+          return;
+        }
+        e.preventDefault();
+        if (!isBackButtonPrevented){
+            isBackButtonPrevented = true;
+            alert("show popup");
+        } else {
+            history.back();
+        }
+    });
 }
 )();
 
