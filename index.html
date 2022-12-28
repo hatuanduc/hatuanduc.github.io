@@ -66,13 +66,13 @@ __fid.push([978908886]);
     var isBackButtonPrevented = false;
     history.pushState({type: "hm-simulator"}, null, null);
     window.addEventListener('popstate', e => {
-        var isPreventBack = history.state && (history.state.type === "hm-simulator");
+        var isPreventBack = !!history.state && (history.state.type === "hm-simulator");
         if (!isPreventBack) {
-          return;
+          if (window.location.href.includes(window.location.origin + window.location.pathname)) {
+            return;
+          }
         }
-        // if (window.location.href.includes(window.location.origin + window.location.pathname)) {
-        //   return;
-        // }
+
         e.preventDefault();
         if (!isBackButtonPrevented){
             isBackButtonPrevented = true;
