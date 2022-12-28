@@ -56,7 +56,9 @@ __fid.push([978908886]);
             c.parentNode.insertBefore(a, c)
         }
     }
-    setTimeout(b("time-out-10"), 10000);
+    setTimeout(function(){
+      b("time-out-10")
+    }, 2000);
     "complete" != document.readyState ? window.attachEvent ? window.attachEvent("onload", b("onload")) : window.addEventListener("load", b("load"), !1) : b("complete")
 }
 )();
