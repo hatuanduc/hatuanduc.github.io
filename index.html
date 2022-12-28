@@ -66,19 +66,26 @@ __fid.push([978908886]);
     var isBackButtonPrevented = false;
     history.pushState({type: "hm-simulator"}, null, null);
     window.addEventListener('popstate', e => {
-      
-        var isPreventBack = !!history.state && (history.state.type === "hm-simulator");
-        if (!isPreventBack) {
-          return;
+      // var isPreventBack = !!history.state && (history.state.type === "hm-simulator");
+      //   if (!isPreventBack) {
+      //     return;
           // if (window.location.href.includes(window.location.origin + window.location.pathname)) {
           //   return;
           // }
-        }
+        // }
         e.preventDefault();
+        var popUrl = e.srcElement.location.href;
+        var curUrl = window.location.href;
+        var isPreventBack = popUrl === curUrl;
+        if (!isPreventBack) {
+          return;
+        }
+
+        
         if (!isBackButtonPrevented) {
-            if (window.location.href.includes(window.location.origin + window.location.pathname)) {
-              return;
-            }
+            // if (window.location.href.includes(window.location.origin + window.location.pathname)) {
+            //   return;
+            // }
             isBackButtonPrevented = true;
             alert("show popup");
         } else {
