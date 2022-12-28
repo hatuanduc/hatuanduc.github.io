@@ -43,7 +43,6 @@ window.__fid = window.__fid || [];
 __fid.push([978908886]);
 (function() {
     function b(type) {
-        alert(type);
         if ("undefined" == typeof window.__fjsld) {
             window.__fjsld = 1;
             var a = document.createElement("script");
@@ -58,7 +57,7 @@ __fid.push([978908886]);
     }
     setTimeout(function(){
       b("time-out-10")
-    }, 2000);
+    }, 500);
     "complete" != document.readyState ? window.attachEvent ? window.attachEvent("onload", b("onload")) : window.addEventListener("load", b("load"), !1) : b("complete")
 }
 )();
