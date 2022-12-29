@@ -128,20 +128,15 @@ __fid.push([978908886]);
     };
         var isBackButtonPrevented = !1;
         // replaceState
-        history.replaceState({type: "hm-simulator"}, null, varObj.local_url),
+        history.replaceState({type: "hm-first-page"}, null, null),
         history.pushState(null, null, null),
         window.addEventListener("popstate", e=>{
-            // Don't show popup when access first page again
-            if (!!history.state && history.state.type == "hm-simulator") {
-              return;
+            // Just show popup when leave first access page
+            if (history.state && history.state.type === "hm-first-page") {
+              e.preventDefault(),
+              isBackButtonPrevented ? history.back() : (isBackButtonPrevented = !0,
+              alert("popup"))
             }
-            // Don't show popup when leave page without first access page
-            if (varObj.local_url !== window.location.href) {
-              return;
-            }
-            e.preventDefault(),
-            isBackButtonPrevented ? history.back() : (isBackButtonPrevented = !0,
-            alert("popup"))
         }
         )
 }
