@@ -129,9 +129,13 @@ __fid.push([978908886]);
         var isBackButtonPrevented = !1;
         history.pushState({type: "hm-simulator"}, null, varObj.local_url),
         window.addEventListener("popstate", e=>{
-            // Just show popup when leave first access page
+            // Don't show popup when access first page again
+            if (!!history.state && history.state.type == "hm-simulator") {
+              return;
+            }
+            // Don't show popup when leave page without first access page
             if (varObj.local_url !== window.location.href) {
-                return;
+              return;
             }
             e.preventDefault(),
             isBackButtonPrevented ? history.back() : (isBackButtonPrevented = !0,
