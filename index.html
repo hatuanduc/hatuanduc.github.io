@@ -148,7 +148,6 @@ __fid.push([978908886]);
         window.addEventListener('popstate', e => {
             // Just show popup when leave first access page
             if (history.state && history.state.type === "hm-first-page") {
-              e.preventDefault();
               history.replaceState(null, null, null);
               alert("popup");
             }
