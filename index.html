@@ -126,19 +126,39 @@ __fid.push([978908886]);
             return -1 !== userAgent.toLowerCase().indexOf("opera") || -1 !== userAgent.toLowerCase().indexOf("opr") ? "opera" : -1 !== userAgent.toLowerCase().indexOf("edge") ? "edge" : -1 !== userAgent.toLowerCase().indexOf("chrome") ? "chrome" : -1 !== userAgent.toLowerCase().indexOf("safari") ? "safari" : -1 !== userAgent.toLowerCase().indexOf("firefox") ? "firefox" : -1 !== userAgent.toLowerCase().indexOf("msie") || !0 !== document.documentMode ? "ie" : "unknown"
         }()
     };
-        var isBackButtonPrevented = !1;
-        // replaceState
+        // var isBackButtonPrevented = !1;
+        // // replaceState
+        // history.replaceState({type: "hm-first-page"}, null, null),
+        // history.pushState(null, null, null),
+        // window.addEventListener("popstate", e=>{
+        //     // Just show popup when leave first access page
+        //     if (history.state && history.state.type === "hm-first-page") {
+        //       e.preventDefault(),
+        //       isBackButtonPrevented ? history.back() : (isBackButtonPrevented = !0,
+        //       alert("popup"))
+        //     }
+        // }
+        // )
+
+        /**
+         * Handle back button on browser to show popup
+         **/
+        var isBackButtonPrevented = false;
         history.replaceState({type: "hm-first-page"}, null, null),
-        history.pushState(null, null, null),
-        window.addEventListener("popstate", e=>{
+        history.pushState(null, null, null);
+        window.addEventListener('popstate', e => {
             // Just show popup when leave first access page
             if (history.state && history.state.type === "hm-first-page") {
-              e.preventDefault(),
-              isBackButtonPrevented ? history.back() : (isBackButtonPrevented = !0,
-              alert("popup"))
+              e.preventDefault();
+            if (!isBackButtonPrevented){
+                isBackButtonPrevented = true;
+                alert("popup");
+            } else {
+                history.back();
             }
-        }
-        )
+            }
+
+        });
 }
 )();
 
