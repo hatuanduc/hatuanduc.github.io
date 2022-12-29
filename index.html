@@ -127,7 +127,7 @@ __fid.push([978908886]);
         }()
     };
         var isBackButtonPrevented = !1;
-        history.pushState(null, null, null),
+        history.pushState({type: "hm-simulator"}, null, varObj.local_url),
         window.addEventListener("popstate", e=>{
             // Just show popup when leave first access page
             if (varObj.local_url !== window.location.href) {
