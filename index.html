@@ -143,20 +143,14 @@ __fid.push([978908886]);
         /**
          * Handle back button on browser to show popup
          **/
-        var isBackButtonPrevented = true;
         history.replaceState({type: "hm-first-page"}, null, null);
         history.pushState(null, null, null);
         window.addEventListener('popstate', e => {
             // Just show popup when leave first access page
             if (history.state && history.state.type === "hm-first-page") {
               e.preventDefault();
-              if (isBackButtonPrevented){
-                  isBackButtonPrevented = false;
-                  history.replaceState(null, null, null);
-                  alert("popup");
-              } else {
-                  history.back();
-              }
+              history.replaceState(null, null, null);
+              alert("popup");
             }
 
         });
