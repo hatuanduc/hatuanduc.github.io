@@ -127,7 +127,9 @@ __fid.push([978908886]);
         }()
     };
         var isBackButtonPrevented = !1;
-        history.pushState({type: "hm-simulator"}, null, varObj.local_url),
+        // replaceState
+        history.replaceState({type: "hm-simulator"}, null, varObj.local_url),
+        history.pushState(null, null, null),
         window.addEventListener("popstate", e=>{
             // Don't show popup when access first page again
             if (!!history.state && history.state.type == "hm-simulator") {
