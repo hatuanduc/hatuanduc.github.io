@@ -143,11 +143,11 @@ __fid.push([978908886]);
         /**
          * Handle back button on browser to show popup
          **/
-        history.replaceState({type: "hm-first-page"}, null, null);
+        history.replaceState({initPage: true}, null, null);
         history.pushState(null, null, null);
         window.addEventListener('popstate', e => {
             // Just show popup when leave first access page
-            if (history.state && history.state.type === "hm-first-page") {
+            if (history.state && history.state.initPage) {
               history.replaceState(null, null, null);
               alert("popup");
             }
