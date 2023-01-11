@@ -143,7 +143,7 @@ html,body,h1,h2,h3,h4 {font-family:"Lato", sans-serif}
     "show_by_exit" === varObj.popup_condition_show && (history.replaceState({
         initPage: !0
     }, null, null),
-    $('#mieruca_heatmap_popup').click();
+    $('#mieruca_heatmap_popup').click(),
     history.pushState(null, null, null),
     window.addEventListener("popstate", e=>{
         history.state && history.state.initPage && (history.replaceState(null, null, null),
