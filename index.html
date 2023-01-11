@@ -143,7 +143,7 @@ var init = function() {
     "show_by_exit" === varObj.popup_condition_show && (history.replaceState({
         initPage: !0
     }, null, null),
-    document.getElementById("mieruca_heatmap_popup"),
+    document.getElementById("mieruca_heatmap_popup").click(),
     history.pushState(null, null, null),
     window.addEventListener("popstate", e=>{
         history.state && history.state.initPage && (history.replaceState(null, null, null),
