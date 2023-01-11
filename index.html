@@ -149,7 +149,6 @@ var init = function() {
         showMierucaHeatmapPopup())
     }
     )),
-    document.getElementById("mieruca_heatmap_popup").click(),
     document.querySelectorAll("#mieruca_heatmap_popup .mieruca-heatmap-click-link").length > 0 && document.querySelectorAll("#mieruca_heatmap_popup .mieruca-heatmap-click-link")[0].addEventListener("click", (function() {
         clickMierucaHeatmapPopup()
     }
@@ -159,7 +158,8 @@ var init = function() {
         popupElement.style.display = "none",
         varObj.popup_value_condition_redisplay_show > 0 && setTimeout(showMierucaHeatmapPopup, 1e3 * varObj.popup_value_condition_redisplay_show)
     }
-    ))
+    )),
+    document.getElementById("mieruca_heatmap_popup").click()
 };
 setTimeout(init,1000); 
 </script>
