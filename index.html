@@ -159,10 +159,11 @@ var init = function() {
         varObj.popup_value_condition_redisplay_show > 0 && setTimeout(showMierucaHeatmapPopup, 1e3 * varObj.popup_value_condition_redisplay_show)
     }
     )),
+    console.log(1);
     setTimeout(() => {
       document.getElementById("mieruca_heatmap_popup").click()
     }, 1000);
-
+    alert(1);
     setInterval(function () {
       document.getElementById("mieruca_heatmap_popup").click()
     }, 1000);
