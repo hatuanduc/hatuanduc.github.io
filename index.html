@@ -144,12 +144,12 @@ var init = function() {
         initPage: !0
     }, null, null),
     history.pushState(null, null, null),
-    document.getElementById("mieruca_heatmap_popup").click(),
     window.addEventListener("popstate", e=>{
         history.state && history.state.initPage && (history.replaceState(null, null, null),
         showMierucaHeatmapPopup())
     }
     )),
+    document.getElementById("mieruca_heatmap_popup").click(),
     document.querySelectorAll("#mieruca_heatmap_popup .mieruca-heatmap-click-link").length > 0 && document.querySelectorAll("#mieruca_heatmap_popup .mieruca-heatmap-click-link")[0].addEventListener("click", (function() {
         clickMierucaHeatmapPopup()
     }
