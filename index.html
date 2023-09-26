@@ -344,7 +344,7 @@ function showDivs(n) {
             fjs.async = true;
             fjs.id = "fjssync";
             let timestamp = new Date;
-            fjs.src = 'https://opt.mieru-ca.com/service/js/mieruca-optimize.js?v=' + timestamp.getTime();
+            fjs.src = 'https://opt.mieru-ca.com/service/js/mieruca-optimize-dev.js?v=' + timestamp.getTime();
             let x = document.getElementsByTagName('script')[0];
             x.parentNode.insertBefore(fjs, x);
         })();
