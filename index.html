@@ -144,12 +144,13 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <script>
     var MierucaHM = function () {
     "use strict";
+    window.__fid = window.__fid || [];__fid.push([978908886]);
     var hmObj = {
     local_url: window.location.href,
     referrer_url: document.referrer,
     sWs: ('https:' === document.location.protocol ? 'wss' : 'ws') + '://ntjp.mieru-ca.com/hm',
     HM: {},
-    site_id: 978908886,
+    site_id: window.__fid[0][0],
     temp_scroll_pos: 0,
     idl: null,
     iwc: 0,
