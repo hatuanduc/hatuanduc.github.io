@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MutationObserver Example</title>
+</head>
+<body>
+    <div id="observedElement">
+        This content will be observed.
+    </div>
+    <button id="changeContentButton">Change Content</button>
+
+    <script>
+        // Select the node that will be observed for mutations
+        const targetNode = document.getElementById('observedElement');
+
+        // Options for the observer (which mutations to observe)
+        const config = { attributes: true, childList: true, subtree: true };
+
+        // Callback function to execute when mutations are observed
+        const callback = (mutationsList, observer) => {
+            for (const mutation of mutationsList) {
+                if (mutation.type === 'childList') {
+                    console.log('A child node has been added or removed.');
+                } else if (mutation.type === 'attributes') {
+                    console.log('The ' + mutation.attributeName + ' attribute was modified.');
+                }
+            }
+        };
+
+        // Create an observer instance linked to the callback function
+        const observer = new MutationObserver(callback);
+
+        // Start observing the target node for configured mutations
+        observer.observe(targetNode, config);
+
+        // Example of a function that changes the content of the observed element
+        document.getElementById('changeContentButton').addEventListener('click', () => {
+            targetNode.textContent = 'The content has been changed!';
+        });
+
+        // Example of a function that changes an attribute of the observed element
+        setTimeout(() => {
+            targetNode.setAttribute('data-example', 'new value');
+        }, 3000);
+    </script>
+</body>
+</html>
