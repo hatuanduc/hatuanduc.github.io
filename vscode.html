@@ -3,15 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MutationObserver Example</title>
+    <title>MutationObserver with XPath Example</title>
 </head>
 <body>
     <div id="observedElement">
-        This content will be observed.
+        <p>This content will be observed.</p>
     </div>
     <button id="changeContentButton">Change Content</button>
+    <button id="addElementButton">Add Element</button>
 
     <script>
+        // Helper function to get the XPath of a node
+        function getXPathForElement(element) {
+            const idx = (sib, name) => sib
+                ? idx(sib.previousElementSibling, name || sib.localName) + (sib.localName === name)
+                : 1;
+            const segs = elm => !elm || elm.nodeType !== 1
+                ? ['']
+                : elm.id && document.getElementById(elm.id) === elm
+                ? [`id("${elm.id}")`]
+                : [...segs(elm.parentNode), `${elm.localName.toLowerCase()}[${idx(elm)}]`];
+            return segs(element).join('/');
+        }
+
         // Select the node that will be observed for mutations
         const targetNode = document.getElementById('observedElement');
 
@@ -22,9 +36,18 @@
         const callback = (mutationsList, observer) => {
             for (const mutation of mutationsList) {
                 if (mutation.type === 'childList') {
-                    console.log('A child node has been added or removed.');
+                    mutation.addedNodes.forEach(node => {
+                        if (node.nodeType === 1) { // Only process element nodes
+                            console.log('A child node has been added: ' + getXPathForElement(node));
+                        }
+                    });
+                    mutation.removedNodes.forEach(node => {
+                        if (node.nodeType === 1) { // Only process element nodes
+                            console.log('A child node has been removed: ' + getXPathForElement(node));
+                        }
+                    });
                 } else if (mutation.type === 'attributes') {
-                    console.log('The ' + mutation.attributeName + ' attribute was modified.');
+                    console.log('The ' + mutation.attributeName + ' attribute was modified on ' + getXPathForElement(mutation.target));
                 }
             }
         };
@@ -37,13 +60,15 @@
 
         // Example of a function that changes the content of the observed element
         document.getElementById('changeContentButton').addEventListener('click', () => {
-            targetNode.textContent = 'The content has been changed!';
+            targetNode.innerHTML = '<p>The content has been changed!</p>';
         });
 
-        // Example of a function that changes an attribute of the observed element
-        setTimeout(() => {
-            targetNode.setAttribute('data-example', 'new value');
-        }, 3000);
+        // Example of a function that adds a new element to the observed element
+        document.getElementById('addElementButton').addEventListener('click', () => {
+            const newElement = document.createElement('p');
+            newElement.textContent = 'A new paragraph has been added.';
+            targetNode.appendChild(newElement);
+        });
     </script>
 </body>
 </html>
