@@ -12,6 +12,10 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
+      - name: Set up Git
+        run: |
+          git config --local user.email "haducptit@gmail.com"
+          git config --local user.name "hatuanduc"
       - name: merge
         uses: mtanzi/action-automerge@v1
         id: merge
