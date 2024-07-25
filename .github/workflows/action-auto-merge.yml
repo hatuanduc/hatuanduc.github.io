@@ -3,7 +3,7 @@ name: Update cms/master
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   update-cms-master:
@@ -17,6 +17,6 @@ jobs:
         id: merge
         with:
           github_token: ${{ github.token }}
-          source: 'test'
-          target: 'main'
+          source: 'main'
+          target: 'test'
           webhook_url: #if present add the Slack webhook
