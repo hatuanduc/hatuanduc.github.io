@@ -14,10 +14,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Fetch all history for all branches and tags
-      - name: Set up Git
-        run: |
-          git config --local user.email "haducptit@gmail.com"
-          git config --local user.name "hatuanduc"
       - name: Merge to main
         run: |
           git fetch --all
