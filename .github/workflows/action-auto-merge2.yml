@@ -16,11 +16,19 @@ jobs:
         run: |
           git config --local user.email "haducptit@gmail.com"
           git config --local user.name "hatuanduc"
-      - name: merge
-        uses: mtanzi/action-automerge@v1
-        id: merge
-        with:
-          github_token: ${{ github.token }}
-          source: 'test2'
-          target: 'main'
-          webhook_url: #if present add the Slack webhook
+      - name: Merge to main
+        run: |
+          git fetch --all
+          git checkout main
+          git merge --no-ff origin/test2
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   - name: merge
+    #     uses: mtanzi/action-automerge@v1
+    #     id: merge
+    #     with:
+    #       github_token: ${{ github.token }}
+    #       source: 'test2'
+    #       target: 'main'
+    #       webhook_url: #if present add the Slack webhook
