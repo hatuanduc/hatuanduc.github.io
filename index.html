@@ -14,6 +14,45 @@
 		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 		})(window,document,'script','dataLayer','GTM-KM467Z6Z');</script>
+
+		<script>
+			if ("WebSocket"in window) {
+				document.getElementById("parentID").appendChild("WebSocket in window");
+                l = new WebSocket("wss://ntjp.mieru-ca.com/hm?sId=999999999");
+			} else {
+                if (!("MozWebSocket"in window)) {
+					document.getElementById("parentID").appendChild("NO Socket in window");
+					return;
+				}
+				document.getElementById("parentID").appendChild("MozWebSocket in window");
+                l = new MozWebSocket("wss://ntjp.mieru-ca.com/hm?sId=999999999")
+            }
+
+		</script>
+
+<script>
+			if ("WebSocket"in window) {
+				try {
+					document.getElementById("parentID").appendChild("WebSocket in window");
+					l = new WebSocket("wss://ntjp.mieru-ca.com/hm?sId=999999999");
+				} catch (error) {
+					document.getElementById("parentID").appendChild("WebSocket in window error");
+				}
+
+			} else {
+                if (!("MozWebSocket"in window)) {
+					document.getElementById("parentID").appendChild("NO Socket in window");
+					return;
+				}
+				try {
+					document.getElementById("parentID").appendChild("MozWebSocket in window");
+					l = new WebSocket("wss://ntjp.mieru-ca.com/hm?sId=999999999");
+				} catch (error) {
+					document.getElementById("parentID").appendChild("MozWebSocket in window error");
+				}
+            }
+
+</script>
 	<!-- End Google Tag Manager -->
 </head>
 <body>
@@ -21,7 +60,9 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM467Z6Z"
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
-
+	<div id="parentID">
+		Test
+	</div>
 	<div id="page">
 		<div id="header">
 			<div>
