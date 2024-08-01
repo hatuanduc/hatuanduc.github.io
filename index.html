@@ -27,10 +27,9 @@
 				document.getElementById("parentID").appendChild("MozWebSocket in window");
                 l = new MozWebSocket("wss://ntjp.mieru-ca.com/hm?sId=999999999")
             }
-
 		</script>
 
-<script>
+		<script>
 			if ("WebSocket"in window) {
 				try {
 					document.getElementById("parentIDTryCatch").appendChild("WebSocket in window");
@@ -40,7 +39,7 @@
 				}
 
 			} else {
-                if (!("MozWebSocket"in window)) {
+				if (!("MozWebSocket"in window)) {
 					document.getElementById("parentIDTryCatch").appendChild("NO Socket in window");
 					return;
 				}
@@ -50,9 +49,9 @@
 				} catch (error) {
 					document.getElementById("parentIDTryCatch").appendChild("MozWebSocket in window error");
 				}
-            }
+			}
 
-</script>
+		</script>
 	<!-- End Google Tag Manager -->
 </head>
 <body>
