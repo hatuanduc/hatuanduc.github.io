@@ -33,22 +33,22 @@
 <script>
 			if ("WebSocket"in window) {
 				try {
-					document.getElementById("parentID").appendChild("WebSocket in window");
+					document.getElementById("parentIDTryCatch").appendChild("WebSocket in window");
 					l = new WebSocket("wss://ntjp.mieru-ca.com/hm?sId=999999999");
 				} catch (error) {
-					document.getElementById("parentID").appendChild("WebSocket in window error");
+					document.getElementById("parentIDTryCatch").appendChild("WebSocket in window error");
 				}
 
 			} else {
                 if (!("MozWebSocket"in window)) {
-					document.getElementById("parentID").appendChild("NO Socket in window");
+					document.getElementById("parentIDTryCatch").appendChild("NO Socket in window");
 					return;
 				}
 				try {
-					document.getElementById("parentID").appendChild("MozWebSocket in window");
+					document.getElementById("parentIDTryCatch").appendChild("MozWebSocket in window");
 					l = new WebSocket("wss://ntjp.mieru-ca.com/hm?sId=999999999");
 				} catch (error) {
-					document.getElementById("parentID").appendChild("MozWebSocket in window error");
+					document.getElementById("parentIDTryCatch").appendChild("MozWebSocket in window error");
 				}
             }
 
@@ -62,6 +62,9 @@
 	<!-- End Google Tag Manager (noscript) -->
 	<div id="parentID">
 		Test
+	</div>
+	<div id="parentIDTryCatch">
+		Test try catch
 	</div>
 	<div id="page">
 		<div id="header">
