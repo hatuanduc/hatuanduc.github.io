@@ -19,42 +19,49 @@
 <body>
 	<script type="text/javascript">
 		(function() {
-			if ("WebSocket"in window) {
-				document.getElementById("parentID").appendChild("WebSocket in window");
-				l = new WebSocket("wss://ntjp.mieru-ca.com/hm?sId=999999999");
-			} else {
-				if (!("MozWebSocket"in window)) {
-					document.getElementById("parentID").appendChild("NO Socket in window");
-					return;
-				}
-				document.getElementById("parentID").appendChild("MozWebSocket in window");
-				l = new MozWebSocket("wss://ntjp.mieru-ca.com/hm?sId=999999999")
-			}
-		})();
+            document.addEventListener('DOMContentLoaded', function() {
+                var parentElement = document.getElementById("parentID");
+                
+                if ("WebSocket" in window) {
+                    parentElement.appendChild(document.createTextNode("WebSocket in window"));
+                    var l = new WebSocket("wss://ntjp.mieru-ca.com/hm?sId=999999999");
+                } else {
+                    if (!("MozWebSocket" in window)) {
+                        parentElement.appendChild(document.createTextNode("NO Socket in window"));
+                        return;
+                    }
+                    parentElement.appendChild(document.createTextNode("MozWebSocket in window"));
+                    var l = new MozWebSocket("wss://ntjp.mieru-ca.com/hm?sId=999999999");
+                }
+            });
+        })();
 	</script>
 
 	<script type="text/javascript">
 		(function() {
-			if ("WebSocket"in window) {
-				try {
-					document.getElementById("parentIDTryCatch").appendChild("WebSocket in window");
-					l = new WebSocket("wss://ntjp.mieru-ca.com/hm?sId=999999999");
-				} catch (error) {
-					document.getElementById("parentIDTryCatch").appendChild("WebSocket in window error");
-				}
+			document.addEventListener('DOMContentLoaded', function() {
+				var parentIDTryCatch = document.getElementById("parentIDTryCatch");
+				if ("WebSocket"in window) {
+					try {
+						parentIDTryCatch.appendChild("WebSocket in window");
+						l = new WebSocket("wss://ntjp.mieru-ca.com/hm?sId=999999999");
+					} catch (error) {
+						parentIDTryCatch.appendChild("WebSocket in window error");
+					}
 
-			} else {
-				if (!("MozWebSocket"in window)) {
-					document.getElementById("parentIDTryCatch").appendChild("NO Socket in window");
-					return;
+				} else {
+					if (!("MozWebSocket"in window)) {
+						parentIDTryCatch.appendChild("NO Socket in window");
+						return;
+					}
+					try {
+						parentIDTryCatch.appendChild("MozWebSocket in window");
+						l = new WebSocket("wss://ntjp.mieru-ca.com/hm?sId=999999999");
+					} catch (error) {
+						parentIDTryCatch.appendChild("MozWebSocket in window error");
+					}
 				}
-				try {
-					document.getElementById("parentIDTryCatch").appendChild("MozWebSocket in window");
-					l = new WebSocket("wss://ntjp.mieru-ca.com/hm?sId=999999999");
-				} catch (error) {
-					document.getElementById("parentIDTryCatch").appendChild("MozWebSocket in window error");
-				}
-			}
+			});
 		})();
 
 	</script>
