@@ -17,54 +17,6 @@
 	<!-- End Google Tag Manager -->
 </head>
 <body>
-	<script type="text/javascript">
-		(function() {
-            document.addEventListener('DOMContentLoaded', function() {
-                var parentElement = document.getElementById("parentID");
-                
-                if ("WebSocket" in window) {
-                    parentElement.appendChild(document.createTextNode("WebSocket in window"));
-                    var l = new WebSocket("wss://ntjp.mieru-ca.com/hm?sId=999999999");
-                } else {
-                    if (!("MozWebSocket" in window)) {
-                        parentElement.appendChild(document.createTextNode("NO Socket in window"));
-                        return;
-                    }
-                    parentElement.appendChild(document.createTextNode("MozWebSocket in window"));
-                    var l = new MozWebSocket("wss://ntjp.mieru-ca.com/hm?sId=999999999");
-                }
-            });
-        })();
-	</script>
-
-	<script type="text/javascript">
-		(function() {
-			document.addEventListener('DOMContentLoaded', function() {
-				var parentIDTryCatch = document.getElementById("parentIDTryCatch");
-				if ("WebSocket"in window) {
-					try {
-						parentIDTryCatch.appendChild(document.createTextNode("WebSocket in window"));
-						l = new WebSocket("wss://ntjp.mieru-ca.com/hm?sId=999999999");
-					} catch (error) {
-						parentIDTryCatch.appendChild(document.createTextNode("WebSocket in window error"));
-					}
-
-				} else {
-					if (!("MozWebSocket"in window)) {
-						parentIDTryCatch.appendChild(document.createTextNode("NO Socket in window"));
-						return;
-					}
-					try {
-						parentIDTryCatch.appendChild("MozWebSocket in window");
-						l = new WebSocket("wss://ntjp.mieru-ca.com/hm?sId=999999999");
-					} catch (error) {
-						parentIDTryCatch.appendChild(document.createTextNode("MozWebSocket in window error"));
-					}
-				}
-			});
-		})();
-
-	</script>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM467Z6Z"
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
