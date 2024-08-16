@@ -1,0 +1,24 @@
+name: Update cms/master
+
+on:
+  pull_request:
+    branches:
+      - 'main'
+    types:
+      - closed  # Only trigger on merged events
+jobs:
+  update-cms-master:
+    name: Merge release/test-* into master
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/test-*')
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: merge
+        uses: mtanzi/action-automerge@v1
+        id: merge
+        with:
+          github_token: ${{ github.token }}
+          source: 'test3'
+          target: 'main'
+          webhook_url: #if present add the Slack webhook
