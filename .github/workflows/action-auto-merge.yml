@@ -17,6 +17,6 @@ jobs:
         id: merge
         with:
           github_token: ${{ github.token }}
-          source: 'release/test-*'
+          source: 'release/test-1.0.0'
           target: 'main'
           webhook_url: #if present add the Slack webhook
