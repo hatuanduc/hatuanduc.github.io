@@ -18,5 +18,5 @@ jobs:
         with:
           github_token: ${{ github.token }}
           source: 'main'
-          target: 'test'
+          target: 'release/test-*'
           webhook_url: #if present add the Slack webhook
