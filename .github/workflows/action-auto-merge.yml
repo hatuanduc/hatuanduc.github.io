@@ -3,7 +3,7 @@ name: Update cms/master
 on:
   push:
     branches:
-      - main
+      - 'release/test-*'
 
 jobs:
   update-cms-master:
