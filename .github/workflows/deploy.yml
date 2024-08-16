@@ -9,7 +9,7 @@ on:
 jobs:
   update-cms-master:
     name: Merge release/test-* into master
-    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/test-*')
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/test-')
     runs-on: ubuntu-latest
     steps:
       - name: checkout
