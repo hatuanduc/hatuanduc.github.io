@@ -22,3 +22,12 @@ jobs:
           source: 'main'
           target: 'test3'
           webhook_url: #if present add the Slack webhook 
+  action-b:
+    name: Action B for release/dev-*
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/dev-')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Action B
+        run: |
+          echo "Running Action B for branch: ${{ github.event.pull_request.head.ref }}"
+          # Add your logic for Action B here
