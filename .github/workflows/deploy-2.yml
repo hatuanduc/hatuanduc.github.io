@@ -6,9 +6,8 @@ on:
       - 'main'
 jobs:
   update-cms-master:
-    name: Merge release/test-* into master
-    if: startsWith(github.ref, 'refs/heads/main') 
-      && startsWith(github.head_ref, 'release/test-*')
+    name: Merge release/test2-* into master
+    if: startsWith(github.head_ref, 'release/test2-*')
     runs-on: ubuntu-latest
     steps:
       - name: checkout
